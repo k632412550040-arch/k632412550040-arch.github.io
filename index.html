@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sử Hồng Hải — Portfolio</title>
+  <meta name="description" content="Portfolio của Sử Hồng Hải — sinh viên kinh doanh, marketing và lập trình, đam mê phân tích dữ liệu và chiến lược thương hiệu.">
+  <meta property="og:title" content="Sử Hồng Hải — Portfolio">
+  <meta property="og:description" content="Business · Marketing · Data Analysis · Python">
+
+  <!-- Fonts -->
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+  <style>
+    /* ==============================
+       DESIGN TOKENS
+    ============================== */
+    :root, [data-theme="light"] {
+      --color-bg:             #f7f6f2;
+      --color-surface:        #f9f8f5;
+      --color-surface-2:      #fbfbf9;
+      --color-surface-offset: #f0ede8;
+      --color-surface-dynamic: #e6e4df;
+      --color-divider:        #dcd9d5;
+      --color-border:         #d4d1ca;
+      --color-text:           #1a1917;
+      --color-text-muted:     #6b6a66;
+      --color-text-faint:     #b5b4af;
+      --color-text-inverse:   #f9f8f4;
+      --color-primary:        #01696f;
+      --color-primary-hover:  #0c4e54;
+      --color-primary-active: #0f3638;
+      --color-primary-highlight: #cedcd8;
+      --color-accent:         #c45c1a;
+      --color-accent-light:   #f5e9dc;
+
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-full: 9999px;
+
+      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 2px oklch(0.2 0.01 80 / 0.06);
+      --shadow-md: 0 4px 12px oklch(0.2 0.01 80 / 0.08);
+      --shadow-lg: 0 12px 32px oklch(0.2 0.01 80 / 0.12);
+
+      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+      --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+      --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+      --text-hero: clamp(3rem,     0.5rem  + 7vw,    8rem);
+
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+      --space-4: 1rem;    --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem;    --space-10: 2.5rem; --space-12: 3rem;
+      --space-16: 4rem;   --space-20: 5rem;   --space-24: 6rem;
+      --content-narrow: 640px;
+      --content-default: 960px;
+      --content-wide: 1200px;
+    }
+
+    [data-theme="dark"] {
+      --color-bg:             #111110;
+      --color-surface:        #161614;
+      --color-surface-2:      #1b1b19;
+      --color-surface-offset: #1e1d1b;
+      --color-surface-dynamic: #272622;
+      --color-divider:        #232220;
+      --color-border:         #303030;
+      --color-text:           #e8e7e3;
+      --color-text-muted:     #8a8986;
+      --color-text-faint:     #5a5957;
+      --color-text-inverse:   #1a1917;
+      --color-primary:        #4f98a3;
+      --color-primary-hover:  #227f8b;
+      --color-primary-active: #1a626b;
+      --color-primary-highlight: #1e3030;
+      --color-accent:         #e8864a;
+      --color-accent-light:   #2a1f14;
+      --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.25);
+      --shadow-md: 0 4px 12px oklch(0 0 0 / 0.35);
+      --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.45);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --color-bg: #111110; --color-surface: #161614; --color-surface-2: #1b1b19;
+        --color-surface-offset: #1e1d1b; --color-surface-dynamic: #272622;
+        --color-divider: #232220; --color-border: #303030;
+        --color-text: #e8e7e3; --color-text-muted: #8a8986; --color-text-faint: #5a5957;
+        --color-text-inverse: #1a1917; --color-primary: #4f98a3;
+        --color-primary-hover: #227f8b; --color-primary-active: #1a626b;
+        --color-primary-highlight: #1e3030; --color-accent: #e8864a;
+        --color-accent-light: #2a1f14;
+        --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.25);
+        --shadow-md: 0 4px 12px oklch(0 0 0 / 0.35);
+        --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.45);
+      }
+    }
+
+    /* ==============================
+       BASE
+    ============================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--space-20); -webkit-font-smoothing: antialiased; }
+    body {
+      min-height: 100dvh;
+      font-family: 'Satoshi', 'Inter', sans-serif;
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.65;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+    ul { list-style: none; }
+    a, button, [role="button"] {
+      transition: color var(--transition), background var(--transition),
+                  border-color var(--transition), box-shadow var(--transition), opacity var(--transition);
+    }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ==============================
+       SCROLL ANIMATIONS
+    ============================== */
+    .fade-in { opacity: 1; }
+    @supports (animation-timeline: scroll()) {
+      .fade-in {
+        opacity: 0;
+        animation: reveal-fade linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+    }
+    @keyframes reveal-fade { to { opacity: 1; } }
+
+    .reveal-up { opacity: 1; }
+    @supports (animation-timeline: scroll()) {
+      .reveal-up {
+        opacity: 0;
+        clip-path: inset(15% 0 0 0);
+        animation: reveal-up-anim linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 55%;
+      }
+    }
+    @keyframes reveal-up-anim { to { opacity: 1; clip-path: inset(0 0 0 0); } }
+
+    /* ==============================
+       LAYOUT UTILITIES
+    ============================== */
+    .container {
+      max-width: var(--content-default);
+      margin-inline: auto;
+      padding-inline: var(--space-6);
+    }
+    .container--wide { max-width: var(--content-wide); }
+    .container--narrow { max-width: var(--content-narrow); }
+
+    /* ==============================
+       HEADER / NAV
+    ============================== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: oklch(from var(--color-bg) l c h / 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.07);
+      transition: box-shadow var(--transition);
+    }
+    .header--scrolled { box-shadow: var(--shadow-sm); }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: var(--space-6);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: var(--text-lg);
+      letter-spacing: -0.02em;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-lg);
+      background: var(--color-primary);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-text { color: var(--color-text); }
+    .logo-text span { color: var(--color-primary); }
+    .nav { display: flex; align-items: center; gap: var(--space-1); }
+    .nav a {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-text-muted);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-md);
+    }
+    .nav a:hover { color: var(--color-text); background: oklch(from var(--color-text) l c h / 0.06); }
+    .header-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .btn-theme {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-text-muted);
+    }
+    .btn-theme:hover { background: oklch(from var(--color-text) l c h / 0.07); color: var(--color-text); }
+    .btn-contact {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text-inverse);
+      background: var(--color-primary);
+      padding: var(--space-2) var(--space-5);
+      border-radius: var(--radius-full);
+    }
+    .btn-contact:hover { background: var(--color-primary-hover); }
+
+    /* Mobile nav toggle */
+    .nav-toggle { display: none; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: var(--radius-md); color: var(--color-text-muted); }
+    .nav-toggle:hover { background: oklch(from var(--color-text) l c h / 0.07); }
+    @media (max-width: 768px) {
+      .nav { display: none; position: fixed; inset: 64px 0 0; background: var(--color-bg); flex-direction: column; align-items: flex-start; padding: var(--space-6); gap: var(--space-2); z-index: 40; border-top: 1px solid var(--color-divider); }
+      .nav.open { display: flex; }
+      .nav a { font-size: var(--text-base); padding: var(--space-3) var(--space-4); width: 100%; border-radius: var(--radius-lg); }
+      .nav-toggle { display: flex; }
+      .btn-contact { display: none; }
+    }
+
+    /* ==============================
+       HERO SECTION
+    ============================== */
+    .hero {
+      padding-block: clamp(var(--space-16), 10vw, var(--space-24));
+      overflow: hidden;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 0%, oklch(from var(--color-primary) l c h / 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+      background: var(--color-primary-highlight);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-5);
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--color-primary);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+    .hero-name {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 900;
+      font-size: var(--text-3xl);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-4);
+    }
+    .hero-name em {
+      font-style: italic;
+      font-family: 'Instrument Serif', serif;
+      color: var(--color-primary);
+    }
+    .hero-tagline {
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      max-width: 48ch;
+      margin-bottom: var(--space-8);
+      line-height: 1.6;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text-inverse);
+      background: var(--color-primary);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-primary:hover { background: var(--color-primary-hover); box-shadow: var(--shadow-md); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text);
+      background: oklch(from var(--color-text) l c h / 0.07);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-full);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.1);
+    }
+    .btn-secondary:hover { background: oklch(from var(--color-text) l c h / 0.12); }
+
+    /* Hero card */
+    .hero-card {
+      background: var(--color-surface);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-2xl);
+      background: linear-gradient(135deg, oklch(from var(--color-primary) l c h / 0.05), transparent 60%);
+      pointer-events: none;
+    }
+    .avatar-wrap {
+      width: 80px; height: 80px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 900; font-size: var(--text-xl);
+      color: white;
+      margin-bottom: var(--space-5);
+      box-shadow: 0 4px 20px oklch(from var(--color-primary) l c h / 0.35);
+    }
+    .hero-card h3 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-2);
+    }
+    .hero-card p {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-6);
+      max-width: 100%;
+    }
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+    .chip {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      background: oklch(from var(--color-text) l c h / 0.07);
+      color: var(--color-text-muted);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.1);
+    }
+    .chip.primary { background: var(--color-primary-highlight); color: var(--color-primary); border-color: transparent; }
+    .chip.accent { background: var(--color-accent-light); color: var(--color-accent); border-color: transparent; }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--color-divider);
+    }
+    .stat { text-align: center; }
+    .stat-val {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: var(--text-xl);
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: var(--space-1);
+    }
+    .stat-label { font-size: var(--text-xs); color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; gap: var(--space-10); }
+    }
+
+    /* ==============================
+       SECTION SHARED
+    ============================== */
+    .section { padding-block: clamp(var(--space-12), 8vw, var(--space-24)); }
+    .section-header { margin-bottom: var(--space-12); }
+    .section-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-3);
+    }
+    .section-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: var(--text-2xl);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+    }
+    .section-desc {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      max-width: 60ch;
+      line-height: 1.7;
+    }
+
+    /* ==============================
+       ABOUT SECTION
+    ============================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: var(--space-16);
+      align-items: start;
+    }
+    .about-card {
+      background: var(--color-surface);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.07);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .about-card-header {
+      background: linear-gradient(135deg, var(--color-primary), oklch(from var(--color-primary) calc(l - 0.1) c calc(h + 20)));
+      padding: var(--space-8);
+      text-align: center;
+    }
+    .about-avatar {
+      width: 96px; height: 96px;
+      border-radius: var(--radius-full);
+      background: white;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 900;
+      font-size: var(--text-xl);
+      color: var(--color-primary);
+      margin: 0 auto var(--space-4);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .about-card-header h3 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      color: white;
+      font-size: var(--text-lg);
+    }
+    .about-card-header p { color: rgba(255,255,255,0.75); font-size: var(--text-sm); margin-top: var(--space-1); }
+    .about-card-body { padding: var(--space-6); }
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-icon { width: 32px; height: 32px; border-radius: var(--radius-md); background: var(--color-primary-highlight); display: flex; align-items: center; justify-content: center; color: var(--color-primary); flex-shrink: 0; }
+    .info-content { flex: 1; min-width: 0; }
+    .info-label { font-size: var(--text-xs); color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+    .info-value { font-size: var(--text-sm); font-weight: 600; color: var(--color-text); }
+    .about-text p {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      margin-bottom: var(--space-5);
+      max-width: 70ch;
+    }
+    .about-interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-6);
+    }
+    .interest-tag {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-full);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.1);
+      color: var(--color-text-muted);
+    }
+    .interest-tag:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ==============================
+       SKILLS SECTION
+    ============================== */
+    .skills-bg {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+      gap: var(--space-4);
+    }
+    .skill-card {
+      background: var(--color-bg);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.07);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .skill-card:hover { border-color: oklch(from var(--color-primary) l c h / 0.4); box-shadow: var(--shadow-md); }
+    .skill-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: var(--space-4);
+      font-size: 1.3rem;
+    }
+    .skill-icon.teal { background: var(--color-primary-highlight); color: var(--color-primary); }
+    .skill-icon.orange { background: var(--color-accent-light); color: var(--color-accent); }
+    .skill-card h4 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-base);
+      margin-bottom: var(--space-2);
+    }
+    .skill-card p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; margin-bottom: var(--space-4); }
+    .skill-bars { display: flex; flex-direction: column; gap: var(--space-2); }
+    .skill-bar-item { display: flex; align-items: center; gap: var(--space-3); }
+    .skill-bar-label { font-size: var(--text-xs); color: var(--color-text-muted); width: 80px; flex-shrink: 0; }
+    .skill-bar-track {
+      flex: 1;
+      height: 5px;
+      background: oklch(from var(--color-text) l c h / 0.1);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .skill-bar-fill.orange { background: var(--color-accent); }
+
+    /* ==============================
+       PROJECTS SECTION
+    ============================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+      gap: var(--space-5);
+    }
+    .project-card {
+      background: var(--color-surface);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.07);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: oklch(from var(--color-primary) l c h / 0.3); }
+    .project-thumb {
+      height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+      font-size: 3rem;
+    }
+    .project-thumb.purple { background: linear-gradient(135deg, #7c3aed22, #a855f722); }
+    .project-thumb.teal   { background: linear-gradient(135deg, oklch(from var(--color-primary) l c h / 0.15), oklch(from var(--color-primary) calc(l-0.05) c calc(h+15) / 0.08)); }
+    .project-thumb.orange { background: linear-gradient(135deg, oklch(from var(--color-accent) l c h / 0.15), oklch(from var(--color-accent) calc(l-0.05) c calc(h-15) / 0.08)); }
+    .project-thumb.green  { background: linear-gradient(135deg, #16a34a22, #22c55e18); }
+    .project-thumb.blue   { background: linear-gradient(135deg, #0284c722, #38bdf818); }
+    .project-thumb.pink   { background: linear-gradient(135deg, #db277722, #f472b618); }
+    .project-body { padding: var(--space-6); flex: 1; display: flex; flex-direction: column; }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .project-tag {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      padding: 3px var(--space-2);
+      border-radius: var(--radius-sm);
+      background: oklch(from var(--color-text) l c h / 0.07);
+      color: var(--color-text-faint);
+    }
+    .project-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: var(--text-lg);
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-2);
+    }
+    .project-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: var(--space-5);
+    }
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--color-divider);
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+    .project-link:hover { color: var(--color-primary-hover); }
+    .project-stars {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+    }
+    .project-stars svg { width: 14px; height: 14px; color: var(--color-accent); }
+
+    /* ==============================
+       EXPERIENCE / EDUCATION SECTION
+    ============================== */
+    .timeline-bg {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+    }
+    .timeline-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+    }
+    .timeline-col-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-8);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .timeline-icon {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-lg);
+      background: var(--color-primary-highlight);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-primary);
+    }
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--color-primary), transparent);
+    }
+    .timeline-item {
+      padding-left: var(--space-10);
+      padding-bottom: var(--space-8);
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 9px;
+      top: 7px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      box-shadow: 0 0 0 3px oklch(from var(--color-primary) l c h / 0.2);
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .tl-date {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-1);
+    }
+    .tl-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: var(--text-base);
+      margin-bottom: var(--space-1);
+    }
+    .tl-org {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      font-weight: 500;
+      margin-bottom: var(--space-2);
+    }
+    .tl-desc { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.65; }
+
+    @media (max-width: 768px) {
+      .timeline-two-col { grid-template-columns: 1fr; gap: var(--space-10); }
+    }
+
+    /* ==============================
+       CONTACT SECTION
+    ============================== */
+    .contact-card {
+      background: var(--color-surface);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.07);
+      border-radius: var(--radius-2xl);
+      padding: clamp(var(--space-8), 5vw, var(--space-16));
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, oklch(from var(--color-primary) l c h / 0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .contact-card h2 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-weight: 900;
+      font-size: var(--text-2xl);
+      letter-spacing: -0.025em;
+      margin-bottom: var(--space-4);
+    }
+    .contact-card p {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      max-width: 50ch;
+      margin: 0 auto var(--space-8);
+      line-height: 1.7;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-full);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.12);
+      color: var(--color-text-muted);
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+    .contact-link:hover { color: var(--color-text); border-color: var(--color-primary); background: var(--color-primary-highlight); }
+    .contact-link.primary-link {
+      background: var(--color-primary);
+      color: white;
+      border-color: transparent;
+    }
+    .contact-link.primary-link:hover { background: var(--color-primary-hover); }
+
+    /* ==============================
+       FOOTER
+    ============================== */
+    .footer {
+      border-top: 1px solid var(--color-divider);
+      padding-block: var(--space-8);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+    }
+    .footer-links {
+      display: flex;
+      gap: var(--space-4);
+    }
+    .footer-links a {
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+    }
+    .footer-links a:hover { color: var(--color-text-muted); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="logo" aria-label="Trang chủ">
+          <div class="logo-mark">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 17l4-8 4 4 3-5 4 9H3z" fill="white" opacity="0.9"/>
+              <circle cx="18" cy="6" r="2.5" fill="white" opacity="0.7"/>
+            </svg>
+          </div>
+          <span class="logo-text">H<span>ải</span></span>
+        </a>
+
+        <nav class="nav" id="main-nav" role="navigation" aria-label="Điều hướng chính">
+          <a href="#about">Về tôi</a>
+          <a href="#skills">Kỹ năng</a>
+          <a href="#projects">Dự án</a>
+          <a href="#experience">Kinh nghiệm</a>
+          <a href="#contact">Liên hệ</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn-theme" data-theme-toggle aria-label="Đổi giao diện">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a href="#contact" class="btn-contact">Liên hệ</a>
+          <button class="nav-toggle" id="nav-toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="main-nav">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-badge">
+              <span class="dot"></span>
+              Sẵn sàng hợp tác
+            </div>
+            <h1 class="hero-name">
+              Sử Hồng Hải<br>
+              <em>Portfolio</em>
+            </h1>
+            <p class="hero-tagline">
+              Sinh viên Kinh doanh · Marketing · Lập trình Python — đam mê phân tích dữ liệu, chiến lược thương hiệu và thương mại quốc tế.
+            </p>
+            <div class="hero-ctas">
+              <a href="#projects" class="btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                Xem dự án
+              </a>
+              <a href="#contact" class="btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Liên hệ tôi
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="avatar-wrap">HH</div>
+            <h3>Sử Hồng Hải</h3>
+            <p>Sinh viên · TP. Hồ Chí Minh, Việt Nam</p>
+            <div class="skill-chips">
+              <span class="chip primary">Business</span>
+              <span class="chip primary">Marketing</span>
+              <span class="chip accent">Python</span>
+              <span class="chip accent">Data Analysis</span>
+              <span class="chip">IELTS</span>
+              <span class="chip">E-commerce</span>
+            </div>
+            <div class="stats-row">
+              <div class="stat">
+                <div class="stat-val">6+</div>
+                <div class="stat-label">Dự án</div>
+              </div>
+              <div class="stat">
+                <div class="stat-val">4</div>
+                <div class="stat-label">Lĩnh vực</div>
+              </div>
+              <div class="stat">
+                <div class="stat-val">HCM</div>
+                <div class="stat-label">Thành phố</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <p class="section-label">Giới thiệu</p>
+          <h2 class="section-title">Về tôi</h2>
+          <p class="section-desc">Kết hợp tư duy kinh doanh, sáng tạo marketing và kỹ năng lập trình để tạo ra giá trị thực.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-card reveal-up">
+            <div class="about-card-header">
+              <div class="about-avatar">HH</div>
+              <h3>Sử Hồng Hải</h3>
+              <p>Business · Marketing · Tech</p>
+            </div>
+            <div class="about-card-body">
+              <div class="info-row">
+                <div class="info-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="info-content">
+                  <div class="info-label">Địa điểm</div>
+                  <div class="info-value">TP. Hồ Chí Minh, Việt Nam</div>
+                </div>
+              </div>
+              <div class="info-row">
+                <div class="info-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l1.42-1.42a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="info-content">
+                  <div class="info-label">Liên hệ</div>
+                  <div class="info-value">suhonghai@email.com</div>
+                </div>
+              </div>
+              <div class="info-row">
+                <div class="info-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div class="info-content">
+                  <div class="info-label">Ngôn ngữ</div>
+                  <div class="info-value">Tiếng Việt · English (IELTS)</div>
+                </div>
+              </div>
+              <div class="info-row">
+                <div class="info-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div class="info-content">
+                  <div class="info-label">Tech</div>
+                  <div class="info-value">Python · Pandas · Excel</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-text fade-in">
+            <p>
+              Tôi là sinh viên đam mê kết hợp <strong>kinh doanh quốc tế</strong>, <strong>marketing chiến lược</strong> và <strong>lập trình</strong> để giải quyết các bài toán thực tiễn. Hiện đang theo học đa ngành bao gồm quản lý văn hóa, luật kinh doanh, thương mại quốc tế và khoa học máy tính.
+            </p>
+            <p>
+              Tôi có kinh nghiệm phân tích case study doanh nghiệp, xây dựng chiến lược IMC và thực hành phân tích dữ liệu với Python/Pandas. Bên cạnh đó, tôi còn có nền tảng về nhiếp ảnh thương mại và sáng tạo nội dung số.
+            </p>
+            <p>
+              Mục tiêu của tôi là trở thành chuyên gia có thể kết nối giữa <em>tư duy số liệu</em> và <em>chiến lược thương hiệu</em>, đặc biệt trong bối cảnh thị trường Đông Nam Á.
+            </p>
+            <div class="about-interests">
+              <span class="interest-tag">📊 Phân tích dữ liệu</span>
+              <span class="interest-tag">📱 Digital Marketing</span>
+              <span class="interest-tag">🌏 Thương mại quốc tế</span>
+              <span class="interest-tag">🎨 Thiết kế sáng tạo</span>
+              <span class="interest-tag">📷 Nhiếp ảnh</span>
+              <span class="interest-tag">🐍 Python</span>
+              <span class="interest-tag">✍️ Content Creation</span>
+              <span class="interest-tag">🏷️ Brand Strategy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills-bg" id="skills">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <p class="section-label">Năng lực</p>
+          <h2 class="section-title">Kỹ năng</h2>
+          <p class="section-desc">Từ lập trình Python đến chiến lược marketing — đa dạng kỹ năng cho môi trường kinh doanh hiện đại.</p>
+        </div>
+        <div class="skills-grid">
+
+          <div class="skill-card fade-in">
+            <div class="skill-icon teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h4>Lập trình Python</h4>
+            <p>Xử lý dữ liệu, thuật toán, cấu trúc dữ liệu với Pandas & NumPy</p>
+            <div class="skill-bars">
+              <div class="skill-bar-item"><span class="skill-bar-label">Python</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:72%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">Pandas</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">Jupyter</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div></div>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <div class="skill-icon orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10m-6 10V4m-6 16v-6"/></svg>
+            </div>
+            <h4>Phân tích dữ liệu</h4>
+            <p>Xử lý, trực quan hóa dữ liệu và rút ra insight kinh doanh</p>
+            <div class="skill-bars">
+              <div class="skill-bar-item"><span class="skill-bar-label">Excel</span><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:82%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">Data Viz</span><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:68%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">Analysis</span><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:74%"></div></div></div>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <div class="skill-icon teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h4>Marketing & Thương hiệu</h4>
+            <p>Chiến lược IMC, digital marketing, brand strategy, content marketing</p>
+            <div class="skill-bars">
+              <div class="skill-bar-item"><span class="skill-bar-label">IMC</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">Branding</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:76%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">TikTok/YT</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <div class="skill-icon orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h4>Kinh doanh Quốc tế</h4>
+            <p>Quản lý văn hóa đa quốc gia, luật kinh doanh, xuất nhập khẩu</p>
+            <div class="skill-bars">
+              <div class="skill-bar-item"><span class="skill-bar-label">Cross-cult.</span><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:79%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">Trade Law</span><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:71%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">Research</span><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:88%"></div></div></div>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <div class="skill-icon teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <h4>Thiết kế & Nhiếp ảnh</h4>
+            <p>Nhiếp ảnh thương mại, visual branding, sản xuất nội dung sáng tạo</p>
+            <div class="skill-bars">
+              <div class="skill-bar-item"><span class="skill-bar-label">Photography</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:83%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">Content</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:77%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">Design</span><div class="skill-bar-track"><div class="skill-bar-fill" style="width:69%"></div></div></div>
+            </div>
+          </div>
+
+          <div class="skill-card fade-in">
+            <div class="skill-icon orange">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h4>Giao tiếp & Ngoại ngữ</h4>
+            <p>Tiếng Việt bản ngữ, tiếng Anh (đang luyện IELTS), thuyết trình và viết báo cáo</p>
+            <div class="skill-bars">
+              <div class="skill-bar-item"><span class="skill-bar-label">Vietnamese</span><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:100%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">English</span><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:70%"></div></div></div>
+              <div class="skill-bar-item"><span class="skill-bar-label">Presentation</span><div class="skill-bar-track"><div class="skill-bar-fill orange" style="width:81%"></div></div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <p class="section-label">Công việc</p>
+          <h2 class="section-title">Dự án nổi bật</h2>
+          <p class="section-desc">Các dự án học thuật và cá nhân — từ phân tích dữ liệu đến chiến lược marketing và lập trình.</p>
+        </div>
+        <div class="projects-grid">
+
+          <article class="project-card fade-in">
+            <div class="project-thumb teal" role="img" aria-label="Phân tích dữ liệu">
+              <span>📊</span>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Pandas</span>
+                <span class="project-tag">Data Analysis</span>
+              </div>
+              <h3 class="project-title">Phân tích dữ liệu bán hàng</h3>
+              <p class="project-desc">Phân tích xu hướng doanh số, phân khúc khách hàng và trực quan hóa KPIs bằng Python Pandas và Matplotlib.</p>
+              <div class="project-footer">
+                <a href="https://github.com/suhonghai" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  Xem trên GitHub
+                </a>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span>12</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-thumb orange" role="img" aria-label="Chiến lược marketing">
+              <span>📱</span>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">IMC</span>
+                <span class="project-tag">Brand Strategy</span>
+                <span class="project-tag">TikTok</span>
+              </div>
+              <h3 class="project-title">Chiến lược IMC thương hiệu Việt</h3>
+              <p class="project-desc">Xây dựng chiến lược truyền thông tích hợp cho thương hiệu nội địa, bao gồm kênh TikTok, YouTube và social media.</p>
+              <div class="project-footer">
+                <a href="https://github.com/suhonghai" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  Xem case study
+                </a>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span>8</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-thumb purple" role="img" aria-label="Xung đột văn hóa">
+              <span>🌏</span>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">Business</span>
+                <span class="project-tag">Cross-cultural</span>
+                <span class="project-tag">Case Study</span>
+              </div>
+              <h3 class="project-title">Phân tích xung đột văn hóa quốc tế</h3>
+              <p class="project-desc">Nghiên cứu sâu về quản lý xung đột văn hóa trong doanh nghiệp đa quốc gia tại thị trường châu Á.</p>
+              <div class="project-footer">
+                <a href="https://github.com/suhonghai" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Đọc báo cáo
+                </a>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span>15</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-thumb green" role="img" aria-label="Python algorithm">
+              <span>🐍</span>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Algorithms</span>
+                <span class="project-tag">OOP</span>
+              </div>
+              <h3 class="project-title">Bộ giải thuật Python</h3>
+              <p class="project-desc">Tập hợp các bài tập lập trình: cấu trúc dữ liệu, giải thuật sắp xếp, vòng lặp và hàm trong Python.</p>
+              <div class="project-footer">
+                <a href="https://github.com/suhonghai" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  Xem code
+                </a>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span>6</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-thumb blue" role="img" aria-label="E-commerce">
+              <span>🛒</span>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">E-commerce</span>
+                <span class="project-tag">Digital Mktg</span>
+                <span class="project-tag">SEA Market</span>
+              </div>
+              <h3 class="project-title">Nghiên cứu thị trường E-commerce SEA</h3>
+              <p class="project-desc">Phân tích xu hướng thương mại điện tử Đông Nam Á, so sánh Shopee, Lazada và TikTok Shop tại Việt Nam.</p>
+              <div class="project-footer">
+                <a href="https://github.com/suhonghai" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Xem nghiên cứu
+                </a>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span>10</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card fade-in">
+            <div class="project-thumb pink" role="img" aria-label="Photography portfolio">
+              <span>📷</span>
+            </div>
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="project-tag">Photography</span>
+                <span class="project-tag">Branding</span>
+                <span class="project-tag">Visual</span>
+              </div>
+              <h3 class="project-title">Portfolio nhiếp ảnh thương mại</h3>
+              <p class="project-desc">Chuyển đổi từ nhiếp ảnh beauty pageant sang thương mại — sản phẩm, thương hiệu và nội dung số.</p>
+              <div class="project-footer">
+                <a href="https://github.com/suhonghai" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Xem portfolio
+                </a>
+                <div class="project-stars">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span>18</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION -->
+    <section class="section timeline-bg" id="experience">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <p class="section-label">Hành trình</p>
+          <h2 class="section-title">Kinh nghiệm & Học vấn</h2>
+        </div>
+        <div class="timeline-two-col">
+          <div class="fade-in">
+            <h3 class="timeline-col-title">
+              <div class="timeline-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
+              Kinh nghiệm
+            </h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="tl-date">2024 – Hiện tại</div>
+                <div class="tl-title">Nhiếp ảnh thương mại</div>
+                <div class="tl-org">Freelance · TP. Hồ Chí Minh</div>
+                <p class="tl-desc">Chuyển đổi từ chụp ảnh sự kiện sang nhiếp ảnh sản phẩm thương mại và nội dung số cho thương hiệu.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="tl-date">2023 – 2024</div>
+                <div class="tl-title">Nghiên cứu & Phân tích Case Study</div>
+                <div class="tl-org">Dự án học thuật</div>
+                <p class="tl-desc">Phân tích chiến lược doanh nghiệp, xung đột văn hóa quốc tế và chiến lược marketing cho các thương hiệu lớn.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="tl-date">2023</div>
+                <div class="tl-title">Sản xuất nội dung số</div>
+                <div class="tl-org">Content Creator · TikTok & YouTube</div>
+                <p class="tl-desc">Tạo nội dung về marketing, kinh doanh và giáo dục; nghiên cứu xu hướng TikTok và chiến lược viral.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="fade-in">
+            <h3 class="timeline-col-title">
+              <div class="timeline-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              Học vấn
+            </h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="tl-date">2023 – Hiện tại</div>
+                <div class="tl-title">Đại học — Kinh doanh & Marketing</div>
+                <div class="tl-org">Trường đại học tại TP. Hồ Chí Minh</div>
+                <p class="tl-desc">Học đa ngành: Quản lý văn hóa, Luật kinh doanh, Thương mại quốc tế, Tin học ứng dụng và Toán kinh tế.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="tl-date">Đang học</div>
+                <div class="tl-title">Python & Data Science</div>
+                <div class="tl-org">Tự học · Coursera / YouTube</div>
+                <p class="tl-desc">Khóa học Python nâng cao: thuật toán, cấu trúc dữ liệu, Pandas, machine learning cơ bản.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="tl-date">Đang luyện</div>
+                <div class="tl-title">IELTS English</div>
+                <div class="tl-org">Luyện thi độc lập</div>
+                <p class="tl-desc">Đang phát triển kỹ năng tiếng Anh học thuật và giao tiếp kinh doanh quốc tế.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container container--narrow">
+        <div class="contact-card reveal-up">
+          <p class="section-label" style="justify-content:center;display:flex">Liên hệ</p>
+          <h2>Hãy cùng làm việc!</h2>
+          <p>Tôi luôn sẵn sàng cho các cơ hội hợp tác, dự án học thuật, hoặc chỉ đơn giản là một cuộc trò chuyện về marketing và công nghệ.</p>
+          <div class="contact-links">
+            <a href="mailto:suhonghai@email.com" class="contact-link primary-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Gửi email
+            </a>
+            <a href="https://github.com/suhonghai" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+            <a href="https://linkedin.com/in/suhonghai" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="#" class="contact-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">© 2026 Sử Hồng Hải. Thiết kế với ❤️ tại TP. Hồ Chí Minh.</p>
+        <div class="footer-links">
+          <a href="#home">Trang chủ</a>
+          <a href="#projects">Dự án</a>
+          <a href="#contact">Liên hệ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    (function(){
+      const t = document.querySelector('[data-theme-toggle]');
+      const r = document.documentElement;
+      let d = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+      r.setAttribute('data-theme', d);
+      function updateIcon(theme) {
+        if (!t) return;
+        t.setAttribute('aria-label', 'Đổi sang chế độ ' + (theme === 'dark' ? 'sáng' : 'tối'));
+        t.innerHTML = theme === 'dark'
+          ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+      updateIcon(d);
+      if (t) {
+        t.addEventListener('click', () => {
+          d = d === 'dark' ? 'light' : 'dark';
+          r.setAttribute('data-theme', d);
+          updateIcon(d);
+        });
+      }
+    })();
+
+    // Header scroll behavior
+    (function(){
+      const header = document.getElementById('header');
+      let lastY = 0;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > 20) header.classList.add('header--scrolled');
+        else header.classList.remove('header--scrolled');
+        lastY = y;
+      }, { passive: true });
+    })();
+
+    // Mobile nav
+    (function(){
+      const toggle = document.getElementById('nav-toggle');
+      const nav = document.getElementById('main-nav');
+      if (!toggle || !nav) return;
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.innerHTML = open
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+      });
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', false);
+          toggle.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+        });
+      });
+    })();
+
+    // Init Lucide icons
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+  </script>
+</body>
+</html>
